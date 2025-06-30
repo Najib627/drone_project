@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+    <Document id="1">
+        <Style id="4">
+            <IconStyle id="5">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="6">
+                    <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Style id="11">
+            <IconStyle id="12">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="13">
+                    <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Style id="18">
+            <IconStyle id="19">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="20">
+                    <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Style id="25">
+            <IconStyle id="26">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="27">
+                    <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Placemark id="3">
+            <styleUrl>#4</styleUrl>
+            <ExtendedData>
+                <Data name="Pitch">
+                    <value>-90</value>
+                </Data>
+            </ExtendedData>
+            <Point id="2">
+                <coordinates>-0.1784796826502486,39.75242766707291,50.0</coordinates>
+                <altitudeMode>absolute</altitudeMode>
+            </Point>
+        </Placemark>
+        <Placemark id="10">
+            <styleUrl>#11</styleUrl>
+            <ExtendedData>
+                <Data name="Pitch">
+                    <value>-90</value>
+                </Data>
+            </ExtendedData>
+            <Point id="9">
+                <coordinates>-0.1784796826502486,39.75242766707291,50.0</coordinates>
+                <altitudeMode>absolute</altitudeMode>
+            </Point>
+        </Placemark>
+        <Placemark id="17">
+            <styleUrl>#18</styleUrl>
+            <ExtendedData>
+                <Data name="Pitch">
+                    <value>-90</value>
+                </Data>
+            </ExtendedData>
+            <Point id="16">
+                <coordinates>-0.1784796826502486,39.75242766707291,50.0</coordinates>
+                <altitudeMode>absolute</altitudeMode>
+            </Point>
+        </Placemark>
+        <Placemark id="24">
+            <styleUrl>#25</styleUrl>
+            <ExtendedData>
+                <Data name="Pitch">
+                    <value>-90</value>
+                </Data>
+            </ExtendedData>
+            <Point id="23">
+                <coordinates>-0.1784796826502486,39.75242766707291,50.0</coordinates>
+                <altitudeMode>absolute</altitudeMode>
+            </Point>
+        </Placemark>
+    </Document>
+</kml>

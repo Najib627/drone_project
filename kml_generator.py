@@ -9,9 +9,9 @@ def generate_kml_from_csv(csv_file, altitude, pitch, file_format):
     with open(csv_file, 'r', newline='') as file:
         reader = csv.DictReader(file)
         for row in reader:
-            lat = float(row['Latitude'])
-            lon = float(row['Longitude'])
-            alt = float(row.get('Altitude', altitude))  # Priorité à l'altitude du fichier, sinon valeur par défaut
+            lat = float(row['latitude'])
+            lon = float(row['longitude'])
+            alt = float(row.get('altitude', altitude))  # Priorité à l'altitude du fichier, sinon valeur par défaut
 
             pnt = kml.newpoint(coords=[(lon, lat, alt)])
             pnt.altitudemode = simplekml.AltitudeMode.absolute
