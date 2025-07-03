@@ -2,8 +2,8 @@ import zipfile
 import os
 
 # Paramètres
-kml_file = "./mission/mission_1.kml"
-kmz_file = "./mission/mission_1.kmz"
+kml_file = '../mission/mission_1.kml'
+kmz_file = '../mission/mission_1.kmz'
 
 # Vérifier si le fichier .kml existe
 if not os.path.exists(kml_file):
