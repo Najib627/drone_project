@@ -1,20 +1,13 @@
-import tkinter as tk
+import tkinter as tk 
 from tkinter import filedialog, messagebox
-from kml_generator import generate_kml_from_csv  # fonction qu’on écrira ensuite
-from display_map import afficher_carte
-import webbrowser
+from kml_generator import generate_kml_from_csv
 import os
 import platform
-
-# ouverture compatible Windows & WSL
-if platform.system() == "Linux" and "microsoft" in platform.release().lower():
-    os.system("explorer.exe map.html")
-else:
-    webbrowser.open("map.html")
+import subprocess
 
 root = tk.Tk()
 root.title("Drone Mission Generator")
-root.geometry("500x400")
+root.geometry("500x500")
 root.resizable(False, False)
 
 csv_path = tk.StringVar()
@@ -35,30 +28,48 @@ def generate():
     messagebox.showinfo("Success", "Mission file generated successfully.")
 
 
-def lancer_affichage():
-    afficher_carte('mission/mission_1.csv')
-    path=os.path.abspath('mission/mission_1.csv') # Bouton de sélection de fichier
-    print(path)
 
+
+
+def ouvrir_kml(path):
+    # Obtenir le chemin absolu et convertir pour Windows si besoin
+    abs_path = os.path.abspath(path)
+
+    if platform.system() == "Linux" and "microsoft" in platform.release().lower():
+        # On est sous WSL, on convertit le chemin pour Windows
+        try:
+            result = subprocess.run(['wslpath', '-w', abs_path], capture_output=True, text=True)
+            windows_path = result.stdout.strip()
+            subprocess.run(['powershell.exe', f'Start-Process "{windows_path}"'])
+        except Exception as e:
+            print("Erreur lors de l'ouverture du fichier KML :", e)
+    else:
+        # Sur Windows natif ou Linux standard
+        try:
+            import webbrowser
+            webbrowser.open(f'file://{abs_path}')
+        except Exception as e:
+            print("Erreur d'ouverture avec webbrowser :", e)
+
+
+
+# GUI layout
 tk.Label(root, text="1. Select CSV File").pack(pady=10)
 tk.Button(root, text="Browse CSV", command=select_csv).pack()
 tk.Label(root, textvariable=csv_path, wraplength=400).pack(pady=5)
 
-# Altitude
 tk.Label(root, text="2. Altitude (m)").pack(pady=10)
 tk.Scale(root, from_=10, to=150, orient="horizontal", variable=altitude).pack()
 
-# Pitch
 tk.Label(root, text="3. Camera Pitch (°)").pack(pady=10)
 tk.Scale(root, from_=-90, to=0, orient="horizontal", variable=pitch).pack()
 
-# Format
 tk.Label(root, text="4. Output Format").pack(pady=10)
 tk.Radiobutton(root, text="KML", variable=file_format, value="kml").pack()
 tk.Radiobutton(root, text="KMZ", variable=file_format, value="kmz").pack()
 
-# Bouton Générer
-tk.Button(root, text="Generate Mission File", command=generate, bg="green", fg="white").pack(pady=20)
-tk.Button(root, text="Afficher Waypoints sur la carte", command=lancer_affichage).pack(pady=20)
+tk.Button(root, text="Generate Mission File", command=generate, bg="green", fg="white").pack(pady=10)
+#tk.Button(root, text="Afficher Waypoints sur la carte", command=lancer_affichage).pack(pady=10)
+tk.Button(root, text="Open KML in Google Earth", command=ouvrir_kml).pack(pady=10)
 
 root.mainloop()

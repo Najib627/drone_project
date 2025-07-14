@@ -5,7 +5,6 @@ from math import ceil, radians, sin, cos, sqrt, atan2
 # Chemins
 INPUT_FILE = '../data/waypoints_detailed.csv'
 OUTPUT_FOLDER = '../mission'
-MAX_POINTS = 200
 DRONE_SPEED = 5  # m/s
 FLIGHT_TIME_MAX = 25  # minutes
 
@@ -26,14 +25,17 @@ with open(INPUT_FILE, mode='r') as file:
     reader = csv.DictReader(file)
     waypoints = list(reader)
 
-# Calcul du nombre de missions nécessaires
-total_missions = ceil(len(waypoints) / MAX_POINTS)
-print(f"Total waypoints : {len(waypoints)} → {total_missions} mission(s)")
+# Calcul du nombre de missions équilibrées
+MAX_POINTS = 50# waypoints est 450
+total_missions = ceil(len(waypoints) / MAX_POINTS)#3
+points_per_mission = ceil(len(waypoints) / total_missions)#150
 
-# Découper en sous-fichiers
+print(f"Total waypoints : {len(waypoints)} → {total_missions} mission(s), {points_per_mission} points/mission")
+
+# Découper en sous-fichiers équilibrés
 for i in range(total_missions):
-    start = i * MAX_POINTS
-    end = start + MAX_POINTS
+    start = i * points_per_mission
+    end = min(start + points_per_mission, len(waypoints))
     chunk = waypoints[start:end]
 
     # Calcul de distance
