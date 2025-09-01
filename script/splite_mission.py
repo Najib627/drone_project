@@ -26,7 +26,7 @@ with open(INPUT_FILE, mode='r') as file:
     waypoints = list(reader)
 
 # Calcul du nombre de missions équilibrées
-MAX_POINTS = 50# waypoints est 450
+MAX_POINTS = 200
 total_missions = ceil(len(waypoints) / MAX_POINTS)#3
 points_per_mission = ceil(len(waypoints) / total_missions)#150
 

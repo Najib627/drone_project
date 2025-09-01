@@ -9,8 +9,8 @@ kmz_file = '../mission/mission_1.kmz'
 if not os.path.exists(kml_file):
     print(f" Fichier KML introuvable : {kml_file}")
 else:
-    # Créer le fichier .kmz (zip renvoyé .kmz)
+    # create the kmz file (zip into .kmz)
     with zipfile.ZipFile(kmz_file, 'w', zipfile.ZIP_DEFLATED) as zipf:
-        zipf.write(kml_file, arcname="doc.kml")  # DJI attend un fichier nommé doc.kml
+        zipf.write(kml_file, arcname="doc.kml")  # DJI are waiting for a file named 'doc.kml'
 
-    print(f" Fichier KMZ généré : {kmz_file}")
+    print(f" KMZ file generated: {kmz_file}")
